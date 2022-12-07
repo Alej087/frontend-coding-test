@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function HomePage({ dataPeople }) {
     const sortData = (array, sortBy) => {
         return array.sort((a, b) => {
@@ -42,21 +44,30 @@ function HomePage({ dataPeople }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {sortByAge
-                            .map((people) => (
-                                <tr key={people.id}>
-                                    <td class="table-user-avatar">
-                                        <img
-                                            src={people.picture}
-                                            alt="avatarUser"
-                                        />
-                                    </td>
-                                    <td>{people.fullName}</td>
-                                    <td>{people.age}</td>
-                                    <td>{people.occupation}</td>
-                                </tr>
-                            ))
-                            .sort()}
+                        {sortByAge.map((people) => (
+                            <tr key={people.id}>
+                                <td class="table-user-avatar">
+                                    <img
+                                        src={people.picture}
+                                        alt="avatarUser"
+                                    />
+                                </td>
+                                <td>{people.fullName}</td>
+                                <td>{people.age}</td>
+                                <td>{people.occupation}</td>
+                                <td>
+                                    <Link
+                                        href={`/profile/${encodeURIComponent(
+                                            people.id
+                                        )}`}
+                                    >
+                                        <button class="button-primary">
+                                            View More
+                                        </button>
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
