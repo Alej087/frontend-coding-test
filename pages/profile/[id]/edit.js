@@ -1,11 +1,5 @@
-function EditProfilePage() {
-    return (
-        <div>
-            <div>
-                <p>Hola</p>
-            </div>
-        </div>
-    );
-}
+import React from "react";
+
+function EditProfilePage() {}
 
 export default EditProfilePage;

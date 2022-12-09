@@ -25,21 +25,32 @@
 }
 
 .header h1 {
+    color: #248b99;
+    text-decoration: underline;
     padding-left: 4%;
     width: 60%;
 }
 
 .header p {
+    text-decoration: underline;
+    color: #248b99;
+    font-weight: bold;
+    font-size: 20px;
     width: 30%;
     padding-right: 5%;
     text-align: right;
 }
 
-.table-user-avatar {
+.table-users {
+    display: flex;
+    justify-content: center;
+}
+
+.table-users-avatar {
     text-align: center;
 }
 
-.table-user-avatar img {
+.table-users-avatar img {
     width: 20%;
 }
 
@@ -59,11 +70,12 @@
 }
 
 .header-profile .button-edit {
-    background-color: rgb(55, 120, 223);
+    background-color: #9cc425;
     border-color: white;
 }
 
 .header-profile h4 {
+    color: #248b99;
     text-decoration: underline;
 }
 
@@ -78,11 +90,17 @@
 .data-person img {
     width: 60%;
     padding: 1%;
-    background-color: #483bc3;
+    background-color: #9cc425;
 }
 
 .data-person span {
     font-weight: bold;
+}
+
+.button-complementary {
+    background-color: #248b99;
+    color: white;
+    border-color: white;
 }
 
 .task-table {
@@ -91,8 +109,47 @@
 }
 
 .task-table .button-edit {
-    background-color: rgb(55, 120, 223);
+    background-color: #9cc425;
     border-color: white;
+}
+
+.header-edit-task {
+    display: flex;
+    margin: 2%;
+}
+
+.header-edit-task h4 {
+    color: #248b99;
+}
+
+.header-edit-task button {
+    margin-right: 3%;
+}
+
+.edit-task {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-task .input-width {
+    width: 150%;
+    margin-bottom: 10%;
+}
+
+.edit-task--form {
+    margin-right: 10%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 150%;
+    margin-top: 10%;
+}
+
+.edit-task--form .cancel-button {
+    color: #33c3f0;
+    border-color: #33c3f0;
 }
 
 /* For devices larger than 400px */

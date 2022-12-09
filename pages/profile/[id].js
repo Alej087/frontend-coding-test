@@ -91,7 +91,11 @@ function ProfilePage({ dataPeople, dataTask }) {
                                 </td>
                                 <td>
                                     <button
-                                        class="button-primary"
+                                        class={
+                                            task.completed
+                                                ? "button-primary"
+                                                : "button-complementary"
+                                        }
                                         onClick={() => {
                                             handleClick(task);
                                         }}

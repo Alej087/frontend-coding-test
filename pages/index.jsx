@@ -34,7 +34,7 @@ function HomePage({ dataPeople }) {
                 <button class="button-primary">Order</button>
             </div>
             <div class="table-users eight columns">
-                <table class="u-full-width">
+                <table>
                     <thead>
                         <tr>
                             <th>Avatar</th>
@@ -46,7 +46,7 @@ function HomePage({ dataPeople }) {
                     <tbody>
                         {sortByAge.map((people) => (
                             <tr key={people.id}>
-                                <td class="table-user-avatar">
+                                <td class="table-users-avatar">
                                     <img
                                         src={people.picture}
                                         alt="avatarUser"
