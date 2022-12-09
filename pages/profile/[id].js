@@ -1,14 +1,31 @@
 import { useRouter } from "next/router";
+import React from "react";
 import Link from "next/link";
 import { FaEdit, FaUserEdit } from "react-icons/fa";
 import { AiTwotoneHome } from "react-icons/ai";
 
 function ProfilePage({ dataPeople, dataTask }) {
+    const dataPerson = dataTask.filter(
+        (task) => task.personId === dataPeople.id
+    );
+    const [tasksPerson, setTasksPerson] = React.useState(dataPerson);
+
+    function handleClick(taskSelected) {
+        const newDataPerson = tasksPerson.map((task) => {
+            if (task.id === taskSelected.id) {
+                task.completed = !task.completed;
+            }
+            return task;
+        });
+        console.log("inicial", newDataPerson);
+        setTasksPerson(newDataPerson);
+    }
+
     return (
         <div>
             <div class="header-profile">
                 <Link href={"/"}>
-                    <button>
+                    <button class="button-primary">
                         <AiTwotoneHome />
                     </button>
                 </Link>
@@ -16,7 +33,7 @@ function ProfilePage({ dataPeople, dataTask }) {
                 <Link
                     href={`/profile/${encodeURIComponent(dataPeople.id)}/edit`}
                 >
-                    <button class="button-primary">
+                    <button class="button-edit button-primary">
                         <FaUserEdit /> Edit Profile
                     </button>
                 </Link>
@@ -26,10 +43,18 @@ function ProfilePage({ dataPeople, dataTask }) {
                     <img src={dataPeople.picture} />
                 </div>
                 <div class="eight columns">
-                    <p>Nickname: {dataPeople.nickname}</p>
-                    <p>Occupation: {dataPeople.occupation}</p>
-                    <p>Gender: {dataPeople.gender}</p>
-                    <p>Age: {dataPeople.age}</p>
+                    <p>
+                        <span>Nickname:</span> {dataPeople.nickname}
+                    </p>
+                    <p>
+                        <span>Occupation:</span> {dataPeople.occupation}
+                    </p>
+                    <p>
+                        <span>Gender:</span> {dataPeople.gender}
+                    </p>
+                    <p>
+                        <span>Age:</span> {dataPeople.age}
+                    </p>
                 </div>
             </div>
             <div class="task-table">
@@ -44,35 +69,40 @@ function ProfilePage({ dataPeople, dataTask }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {dataTask
-                            .filter((task) => task.personId === dataPeople.id)
-                            .map((taskPeople) => (
-                                <tr>
-                                    <td>
-                                        <Link
-                                            href={`/tasks/${encodeURIComponent(
-                                                taskPeople.id
-                                            )}/edit`}
-                                        >
-                                            <button class="button-primary">
-                                                <FaEdit />
-                                            </button>
-                                        </Link>
-                                    </td>
-                                    <td>{taskPeople.title}</td>
-                                    <td>{taskPeople.description}</td>
-                                    <td>
-                                        {taskPeople.completed
-                                            ? "Completed"
-                                            : "Not Completed"}
-                                    </td>
-                                    <td>
-                                        <button class="button-primary">
-                                            Tarea
+                        {dataPerson.map((task) => (
+                            <tr key={task.id}>
+                                <td>
+                                    <Link
+                                        href={`/tasks/${encodeURIComponent(
+                                            task.id
+                                        )}/edit`}
+                                    >
+                                        <button class="button-edit button-primary">
+                                            <FaEdit />
                                         </button>
-                                    </td>
-                                </tr>
-                            ))}
+                                    </Link>
+                                </td>
+                                <td>{task.title}</td>
+                                <td>{task.description}</td>
+                                <td>
+                                    {task.completed
+                                        ? "Completed"
+                                        : "Not Completed"}
+                                </td>
+                                <td>
+                                    <button
+                                        class="button-primary"
+                                        onClick={() => {
+                                            handleClick(task);
+                                        }}
+                                    >
+                                        {task.completed
+                                            ? "Mark as Not Completed"
+                                            : "Mark as Completed"}
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

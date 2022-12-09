@@ -58,6 +58,15 @@
     margin-top: 5%;
 }
 
+.header-profile .button-edit {
+    background-color: rgb(55, 120, 223);
+    border-color: white;
+}
+
+.header-profile h4 {
+    text-decoration: underline;
+}
+
 .data-person {
     display: flex;
     justify-content: space-between;
@@ -68,11 +77,22 @@
 
 .data-person img {
     width: 60%;
+    padding: 1%;
+    background-color: #483bc3;
+}
+
+.data-person span {
+    font-weight: bold;
 }
 
 .task-table {
     width: 60%;
     margin: 0% 20%;
+}
+
+.task-table .button-edit {
+    background-color: rgb(55, 120, 223);
+    border-color: white;
 }
 
 /* For devices larger than 400px */
